@@ -18,15 +18,14 @@ class player : public gameObject{
 		float getBatWidth();
 		float getBatSize();
         int getAiFramecount();
-        bool getHasReturned();
 
 		void setBatWidth( float _batWidth );
 		void setBatSize( float _batSize );
         void setAiFramecount( int _aiFramecount );
-        void setHasReturned( bool _hasReturned );
 
 		//Other methods
         void draw() override;
+        void update() override;
         void doAI(gameObject g);
 
 	private:
@@ -34,7 +33,6 @@ class player : public gameObject{
 		float batWidth;
 		float batSize;
         int aiFramecount;
-        bool hasReturned;
 
 };
 #endif

@@ -28,6 +28,8 @@ ball::ball(){
 
     x_vel = ballSpeed * cos(angle);
     y_vel = ballSpeed * sin(angle);
+
+    drag = 1.0f;
 }
 ball::~ball(){}
 
@@ -111,7 +113,6 @@ bool ball::collide( player p ){
     return false;
 }
 void ball::draw(){
-    debugger::log("Drawing ball");
     ofDrawCircle(x,y,ballSize);
 }
 

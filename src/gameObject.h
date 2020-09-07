@@ -27,7 +27,7 @@ class gameObject {
 
 		//Other methods
         virtual void draw();
-        void update();
+        virtual void update();
 
     //protected:
 		//Variables

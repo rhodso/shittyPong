@@ -1,7 +1,7 @@
 #include "ofApp.h"
 
 void ofApp::setup(){
-    debugger::setDebug(true);
+    debugger::setDebug(false);
     debugger::log("Start");
     ofSetVerticalSync(true);
     ofBackground(0);
@@ -9,15 +9,15 @@ void ofApp::setup(){
     player2 = player();
     b = ball();
     b.setBallSize(15);
+    //b.setDrag(1.0f);
     player1.setX(ofGetWidth()-20);
     player2.setX(20);
-    player2.setHasReturned(true);
     p1Score = p2Score = 0;
     debugger::log("Finshed setup");
 }
 
 void ofApp::update(){
-    debugger::log("Frame " + std::to_string(frameCount));
+    //debugger::log("Frame " + std::to_string(frameCount));
     handleKeypresses();
 
     b.collide(player1);
@@ -28,7 +28,6 @@ void ofApp::update(){
     player2.update();
 
     player1.doAI(b);
-    player2.doAI(b);
 
     //Scoring
     int score = b.checkScore();
@@ -48,27 +47,21 @@ void ofApp::draw(){
     player1.draw();
     player2.draw();
     ofDrawBitmapString(ofToString(p2Score) + ofToString("  ") + ofToString(p1Score) + ofToString("\n"), ofGetWidth()/2, ofGetHeight()*0.1);
-
-    ofDrawCircle(ofGetWidth()/2, ofGetHeight()/2, 5);
-
 }
 
 void ofApp::handleKeypresses(){
     if(keys[119] && !keys[115]){
-        player1.y_vel = 15.0;
-        keys[119] = false;
+        player2.y_vel = -15.0;
     } else if(keys[115] && !keys[119]){
-        player1.y_vel = -15.0;
-        keys[115] = false;
+        player2.y_vel = 15.0;
     }
 
 }
 
 void ofApp::keyPressed(int key){ keys[key] = true; }
-
+void ofApp::keyReleased(int key){ keys[key] = false; }
 
 //Not used
-void ofApp::keyReleased(int key){}
 void ofApp::mouseMoved(int x, int y ){}
 void ofApp::mouseDragged(int x, int y, int button){}
 void ofApp::mousePressed(int x, int y, int button){}
