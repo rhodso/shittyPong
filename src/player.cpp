@@ -2,16 +2,17 @@
 
 //Includes
 #include "player.h"
-
+#include "debugger.h"
 
 //Constructor and Destructor
 player::player(){
-    x = ofGetWidth() - 40.0;
+    x = ofGetWidth() - 20.0;
     y = ofRandom(0, ofGetHeight());
     x_vel = 0;
     y_vel = 0;
     drag = 0.9;
     hasReturned = false;
+    debugger::log("Created player");
 }
 player::~player(){}
 
@@ -28,6 +29,8 @@ void player::setHasReturned( bool _hasReturned){ hasReturned = _hasReturned; }
 
 //Other methods
 void player::draw(){
+    debugger::log("Drawing player");
+    ofSetColor(ofColor::white);
     ofDrawRectangle(x,y,batWidth,batSize);
 }
 void player::doAI(gameObject g){

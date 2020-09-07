@@ -1,9 +1,14 @@
 #include "ofApp.h"
 
 void ofApp::setup(){
+    debugger::setDebug(true);
     debugger::log("Start");
     ofSetVerticalSync(true);
-    //ofBackground(0); //Where the backgound colour is set to black
+    ofBackground(0);
+    player1 = player();
+    player2 = player();
+    b = ball();
+    b.setBallSize(15);
     player1.setX(ofGetWidth()-20);
     player2.setX(20);
     player2.setHasReturned(true);
@@ -33,10 +38,11 @@ void ofApp::update(){
     else if(score == 2){
         p2Score++;
     }
+    frameCount++;
 }
 
 void ofApp::draw(){
-    //ofBackground(0);
+    ofBackground(0);
     ofSetColor(255);
     b.draw();
     player1.draw();
