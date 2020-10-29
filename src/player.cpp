@@ -55,6 +55,17 @@ void player::update(){
 }
 void player::doAI(gameObject g){
     if(ofDist(x,0,g.x,0) < (ofGetWidth()/2)){
+
+        /*
+         *  Formula to work out the target of where the 
+         *  ball's going to land, but it doesn't take 
+         *  into account wall bounces because that's FAR 
+         *  too much effort. Credit to Maria for helping 
+         *  me wioth maths because once I wanted to be a 
+         *  maths teacher then found out that maths was 
+         *  hard, so that killed that dream rather quickly
+         */
+
         float targetY = g.y + ((ofDist(g.x, 0, x, 0)*g.y_vel)/g.x_vel);
         if(y < targetY && targetY < y + batSize){ //Bat is in the right place, do nothing
             y_vel = 0;
