@@ -66,7 +66,7 @@ void player::doAI(gameObject g){
          *  hard, so that killed that dream rather quickly
          */
 
-        float targetY = g.y + ((ofDist(g.x, 0, x, 0)*g.y_vel)/g.x_vel);
+        float targetY = g.y + ((ofDist(g.x, 0, x, 0)*g.y_vel)/abs(g.x_vel));
         if(y < targetY && targetY < y + batSize){ //Bat is in the right place, do nothing
             y_vel = 0;
         }
